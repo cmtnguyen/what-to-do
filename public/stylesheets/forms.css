@@ -1,0 +1,14 @@
+.cardSize {
+  width: 50vw;
+}
+
+.cardSize .cardImgContainer {
+  width: 100%;
+}
+
+.cardSize .cardImgContainer .cardImg {
+  display: block;
+  width: 40%;
+  margin: 1rem auto;
+}
+/*# sourceMappingURL=forms.css.map */

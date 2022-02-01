@@ -1,0 +1,24 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+#polygon {
+  animation: spin 8000ms linear infinite;
+  display: block;
+  margin: 0 auto;
+  height: 90%;
+}
+
+.titleText {
+  position: absolute;
+  text-align: center;
+}
+
+.containerAnimate {
+  height: 70vh;
+}
