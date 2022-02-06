@@ -1,0 +1,32 @@
+.navbar {
+  background-color: $mainGreen;
+  .navbar-brand {
+    color: $fadedGreen;
+    &:hover {
+      color: $fadedGreen;
+    }
+  }
+  .icon {
+    margin-right: 0.5rem;
+  }
+  button .navbar-toggler {
+    color: $darkGreen;
+    span .navbar-toggler-icon {
+      color: $darkGreen;
+    }
+  }
+}
+.navbar-dark .navbar-nav {
+  .nav-link,
+  .nav-text {
+    font-weight: 400;
+    padding: 0.25rem 0;
+    color: $darkGreen;
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+  }
+  .nav-link:hover {
+    color: $darkGreenNavHover;
+    border-bottom-color: $darkGreenNavHover;
+  }
+}

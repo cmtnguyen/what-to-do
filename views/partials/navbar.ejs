@@ -1,0 +1,29 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand icon" href="/">
+            <img src="/images/logo.svg" width="25" height="25" alt="">
+        </a>
+        <a class="navbar-brand" href="/">WHAT-TO-DO</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <% if (currentUser) { %>
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/tasks">View List</a>
+                    <a class="nav-link" href="/tasks/new">Add Task</a>
+                </div>
+                <% } %>
+                    <div class="navbar-nav ms-auto">
+                        <% if (!currentUser) { %>
+                            <a href="/signup" class="nav-link">Sign Up</a>
+                            <a href="/login" class="nav-link">Login</a>
+                            <% } else { %>
+                                <span class="nav-text">Welcome, <%= currentUser.username %> </span>
+                                <a href="/logout" class="nav-link">Logout</a>
+                                <% } %>
+                    </div>
+        </div>
+    </div>
+</nav>

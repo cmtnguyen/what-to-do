@@ -1,0 +1,44 @@
+<% layout('layout/boilerplate')%>
+    <h1 class="text-center">
+        <span class="taskColor">
+            <%= task.name %>
+        </span> <a href="/tasks?priority=<%=task.priority %>">
+            <span class="btn <%= task.priority %> rounded-top">
+                <%= task.priority %>
+            </span>
+        </a>
+    </h1>
+    <div class="container d-flex justify-content-center align-items-center mt-2 mb-4">
+        <div class="row">
+            <div class="col-md-6 col-xl-4">
+                <div class="card shadow cardBorder detailCardSize">
+                    <div class="card-body">
+                        <% if (task.deadline) { %>
+                            <h5>Deadline:
+                            </h5>
+                            <h3>
+                                <%= taskDeadline %>
+                            </h3>
+                            <hr>
+                            <% } %>
+
+                                <h5>Description:
+                                </h5>
+                                <p class="desc-text">
+                                    <%= task.description %>
+                                </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex column">
+        <div class="row me-auto">
+            <a href="/tasks/<%= task._id %>/edit" class="btn edit-btn">EDIT TASK</a></button>
+        </div>
+        <div class="row align-content-end">
+            <form action="/tasks/<%= task._id %>?_method=DELETE" method="post"><button class="btn delete-btn">DELETE
+                    TASK</button>
+            </form>
+        </div>
+    </div>
