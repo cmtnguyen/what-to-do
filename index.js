@@ -56,7 +56,7 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        //secure: true, //uncomment when deploying
+        //secure: true, //uncomment when deploying to secure site
         expires: Date.now() * 1000 * 60 * 60 * 24 * 7, //millsec sec min hour day -> expires week from now
         maxAge: 1000 * 60 * 60 * 24 * 7 //user must log in again a week after they sign in
     }
@@ -68,14 +68,7 @@ app.use(passport.session()); //call this after calling session
 passport.use(new LocalStratagy(User.authenticate()));
 passport.serializeUser(User.serializeUser()); //stores user in session
 passport.deserializeUser(User.deserializeUser()); //remove user from session
-
 app.use(flash());
-app.use((req, res, next) => {
-    res.locals.currentUser = req.user;
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    next();
-})
 app.use(helmet());
 
 const scriptSrcUrls = [
@@ -108,17 +101,19 @@ app.use(
     })
 );
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`PORT ${port} SERVING`);
-});
-
-app.get('/', (req, res) => {
-    res.render('home');
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
 })
 
 app.use('/', userRoutes);
 app.use('/tasks', taskRoutes);
+
+app.get('/', (req, res) => {
+    res.render('home');
+})
 
 app.all('*', (req, res) => { //every request for every path not mentioned above
     res.render('tasks/notFound');
@@ -129,3 +124,8 @@ app.use((err, req, res, next) => { //catches errors
     if (!err.message) err.message = 'problem';
     res.status(status).render('error', { err });
 })
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`PORT ${port} SERVING`);
+});

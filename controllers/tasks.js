@@ -3,6 +3,7 @@ const User = require('../models/user');
 
 const priorities = ['low', 'medium', 'high']; //arr of priorities
 
+//date check
 let today = new Date();
 const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0'); //Jan is 1
@@ -43,6 +44,9 @@ let transformMonth = (month) => {
 }
 
 let twelveHour = (hour, min) => {
+    if (min < 10) {
+        min = String(min).padStart(2, '0')
+    }
     if (hour === 0) {
         return `12:${min} AM`; //12AM
     }
@@ -116,7 +120,7 @@ module.exports.taskChecked = async (req, res) => { //updates the task to include
 }
 
 module.exports.renderNew = (req, res) => { //creates new task
-    res.render('tasks/new', { priorities, today });
+    res.render('tasks/new', { priorities });
 }
 
 module.exports.createNew = async (req, res) => { //adds task to db
@@ -146,7 +150,7 @@ module.exports.renderUpdate = async (req, res) => { //finds the task to edit
     const user = await User.findById(req.user._id);
     const { id } = req.params;
     const found = await Task.findOne({ _id: { $in: user.tasks, $eq: id } });
-    res.render('tasks/edit', { task: found, priorities, today });
+    res.render('tasks/edit', { task: found, priorities });
 }
 
 module.exports.updateTask = async (req, res) => { //updates the task

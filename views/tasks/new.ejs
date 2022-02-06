@@ -17,7 +17,7 @@
                                 <div class="col">
                                     <label for="deadline" class="col-form-label">Deadline</label>
                                     <input type="datetime-local" class="form-control" name="task[deadline]"
-                                        id="deadline" min="<%= today %>">
+                                        id="deadline" min="<% new Date(); %>">
                                 </div>
                                 <div class="col">
                                     <label for="priority" class="col-form-label req-asterik">Priority</label>

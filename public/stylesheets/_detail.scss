@@ -1,0 +1,31 @@
+.desc-text {
+  color: $sub-text;
+}
+
+.edit-btn,
+.delete-btn {
+  width: fit-content;
+  color: white;
+  font-weight: 500;
+}
+
+.edit-btn {
+  background-color: $edit;
+}
+.delete-btn {
+  background-color: $delete;
+}
+
+.detailCardSize {
+  width: 75vw;
+}
+
+.taskColor {
+  color: $darkGreen;
+}
+
+@media screen and (max-width: 600px) {
+  h3 {
+    font-size: 1.25rem;
+  }
+}

@@ -27,7 +27,6 @@ module.exports.renderLogin = (req, res) => {
 module.exports.loginUser = (req, res) => {
     req.flash('success', 'Welcome Back!');
     const redirect = '/tasks';
-    delete req.session.returnTo; //removes stored url 
     res.redirect(redirect);
 }
 
