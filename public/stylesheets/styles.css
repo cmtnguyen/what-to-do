@@ -80,12 +80,6 @@
   margin: 2.5rem auto;
 }
 
-@media screen and (max-width: 600px) {
-  .cardSize .cardImgContainer .cardImg {
-    height: 15vh;
-  }
-}
-
 .submit-btn {
   background: #adc3b6;
   color: white;
@@ -105,6 +99,15 @@
 .back {
   text-decoration: none;
   color: #517470;
+}
+
+@media screen and (max-width: 600px) {
+  .cardSize {
+    width: 75vw;
+  }
+  .cardSize .cardImgContainer .cardImg {
+    height: 20vh;
+  }
 }
 
 .desc-text {
